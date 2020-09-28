@@ -6,11 +6,17 @@ import BookEntry from './BookEntry/BookEntry';
 
 function App() {
 	return (
-		<main className="App">
-			<Route path="/" exact component={HomePage} />
-			<Route path="/book/:id" component={BookDetails} />
-			<Route path="/newbook" component={BookEntry} />
-		</main>
+		<body>
+			<nav>
+				<h1>My Library</h1>
+				<button type="button">Log In</button>
+			</nav>
+			<main className="App">
+				<Route path="/" exact component={HomePage} />
+				<Route path="/book/:id" component={BookDetails} />
+				<Route path="/newbook" component={BookEntry} />
+			</main>
+		</body>
 	);
 }
 
