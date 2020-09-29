@@ -26,19 +26,25 @@ export default class HomePage extends Component {
 		return (
 			<div htmlFor="HomePage">
 				<div htmlFor="LibraryList">
-					<div htmlFor="LibraryListHeader">
-						<h2>Books in your library</h2>
-						<button type="button">+</button>
+					<div htmlFor="LibraryListHeader" className="container">
+						<h2 className="item">Books in your library</h2>
+						<button className="item" type="button">
+							+
+						</button>
 					</div>
+					<hr />
 					<div htmlFor="LibraryListItems">
 						{this.ListConverter(this.state.libraryList)}
 					</div>
 				</div>
 				<div htmlFor="WishList">
-					<div htmlFor="WishListHeader">
-						<h2>Books in your Wish List</h2>
-						<button type="button">+</button>
+					<div htmlFor="WishListHeader" className="container">
+						<h2 className="item">Books in your Wish List</h2>
+						<button type="button" className="item">
+							+
+						</button>
 					</div>
+					<hr />
 					<div htmlFor="WishListItems">
 						{this.ListConverter(this.state.libraryWishList)}
 					</div>

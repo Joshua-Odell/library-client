@@ -3,14 +3,18 @@ import { Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
 import BookDetails from './BookDetails/BookDetails';
 import BookEntry from './BookEntry/BookEntry';
+import './App.css';
 
 function App() {
 	return (
 		<body>
-			<nav>
-				<h1>My Library</h1>
-				<button type="button">Log In</button>
+			<nav className="container">
+				<h1 className="item">My Library</h1>
+				<button className="item" type="button">
+					Log In
+				</button>
 			</nav>
+			<hr />
 			<main className="App">
 				<Route path="/" exact component={HomePage} />
 				<Route path="/book/:id" component={BookDetails} />

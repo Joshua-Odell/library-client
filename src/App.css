@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+@media screen and (min-width: 200px) {
+	.container {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+}
