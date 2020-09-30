@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class BookDetails extends Component {
 	state = {
 		wish: false,
-		title: '',
-		author: '',
-		genere: '',
+		title: 'TITLE',
+		author: 'AUTHOR',
+		genere: 'ACTION',
 		lent: false,
 		completed: false,
 	};
@@ -15,24 +15,36 @@ export default class BookDetails extends Component {
 		if (this.state.wish) {
 			return (
 				<div>
-					<div id="Title">Title: </div>
-					<div id="Author">Author: </div>
-					<div id="Genere">Genere: </div>
+					<div id="Title">Title: {this.state.title} </div>
+					<div id="Author">Author: {this.state.author} </div>
+					<div id="Genere">Genere: {this.state.genere} </div>
 				</div>
 			);
 		} else {
 			return (
 				<div>
-					<div id="Title">Title: </div>
-					<div id="Author">Author: </div>
-					<div id="Genere">Genere: </div>
-					<div id="Lent">Lent Out: </div>
-					<div id="Completed">Completed: </div>
+					<div id="Title">Title: {this.state.title} </div>
+					<div id="Author">Author: {this.state.author} </div>
+					<div id="Genere">Genere: {this.state.genere} </div>
+					<div id="Lent">Lent Out: {this.BoolConversion(this.state.lent)} </div>
+					<div id="Completed">
+						Completed: {this.BoolConversion(this.state.completed)}{' '}
+					</div>
 				</div>
 			);
 		}
 	};
+
+	// I prefer a yes or no for user interaction
+	BoolConversion = (bool) => {
+		if (bool) {
+			return 'Yes';
+		} else {
+			return 'No';
+		}
+	};
+
 	render() {
-		return <div>{this.Display}</div>;
+		return <this.Display />;
 	}
 }

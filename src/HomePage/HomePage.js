@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BookEntry from '../BookEntry/BookEntry';
 
 export default class HomePage extends Component {
 	state = {
@@ -8,6 +9,10 @@ export default class HomePage extends Component {
 		libraryWishList: [],
 	};
 
+	// This takes the returned fetchGet request list and converts it to a li format
+	// TODO:
+	// Redirect to /book/:id page when clicked on
+	// change the title to grow when hovered over to indicate that it is a link and change the pointer on hover
 	ListConverter = (list) => {
 		if (!list.length) {
 			return 'There are no books in your library';
@@ -22,30 +27,43 @@ export default class HomePage extends Component {
 		return <ul>{listItems}</ul>;
 	};
 
+	AddButton = (wish) => {
+		// Redirects to /newbook and calls BookEntry with a boolean prop depending on if
+		// the item is from the regular library or the wish list
+	};
+
 	render() {
 		return (
 			<div htmlFor="HomePage">
 				<div htmlFor="LibraryList">
 					<div htmlFor="LibraryListHeader" className="container">
 						<h2 className="item">Books in your library</h2>
-						<button className="item" type="button">
+						<button
+							className="item button"
+							type="button"
+							onClick={this.AddButton(false)}
+						>
 							+
 						</button>
 					</div>
 					<hr />
-					<div htmlFor="LibraryListItems">
+					<div htmlFor="LibraryListItems" className="content">
 						{this.ListConverter(this.state.libraryList)}
 					</div>
 				</div>
 				<div htmlFor="WishList">
 					<div htmlFor="WishListHeader" className="container">
 						<h2 className="item">Books in your Wish List</h2>
-						<button type="button" className="item">
+						<button
+							type="button"
+							className="item button"
+							onClick={this.AddButton(true)}
+						>
 							+
 						</button>
 					</div>
 					<hr />
-					<div htmlFor="WishListItems">
+					<div htmlFor="WishListItems" className="content">
 						{this.ListConverter(this.state.libraryWishList)}
 					</div>
 				</div>
