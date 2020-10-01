@@ -5,22 +5,32 @@ export default class HomePage extends Component {
 	state = {
 		libraryList: [
 			{ title: 'A test of titles', author: 'Testy Mctest Test', id: 1 },
+			{
+				title: 'The Legend of Sleepy Hollow',
+				author: 'Washington Irving',
+				id: 2,
+			},
 		],
 		libraryWishList: [],
 	};
 
 	// This takes the returned fetchGet request list and converts it to a li format
 	// TODO:
-	// Redirect to /book/:id page when clicked on
 	// change the title to grow when hovered over to indicate that it is a link and change the pointer on hover
 	ListConverter = (list) => {
 		if (!list.length) {
 			return 'There are no books in your library';
 		}
 		const listItems = list.map((item) => {
+			let newLocation = `http://localhost:3000/book/${item.id}`;
 			return (
 				<li>
-					<a href="">{item.title}</a>, By: {item.author}
+					<p>
+						<a href={newLocation} target="_blank">
+							{item.title}
+						</a>
+						, By: {item.author}
+					</p>
 				</li>
 			);
 		});
