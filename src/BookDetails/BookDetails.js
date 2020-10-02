@@ -30,20 +30,43 @@ export default class BookDetails extends Component {
 		}
 	};
 
+	// DeleteHandler is called from the book details section to remove an item from the db
+	DeleteHandler = () => {
+		alert('delete');
+	};
+
 	Display = () => {
 		if (this.state.wish) {
 			return (
 				<div>
-					<div id="Title">Title: {this.state.title} </div>
-					<div id="Author">Author: {this.state.author} </div>
-					<div id="Genere">Genere: {this.state.genere} </div>
+					<div className="container">
+						<div id="Title" className="item">
+							Title: {this.state.title}{' '}
+						</div>
+						<div className="item">
+							<button type="button" onClick={this.DeleteHandler.bind(this)}>
+								Delete Book
+							</button>
+						</div>
+					</div>
+					<div>
+						<div id="Author">Author: {this.state.author} </div>
+						<div id="Genere">Genere: {this.state.genere} </div>
+					</div>
 				</div>
 			);
 		} else {
 			return (
 				<div>
+					<div className="container">
+						<div id="Title" className="item">
+							<h2>{this.state.title}</h2>
+						</div>
+						<div className="item" onClick={this.DeleteHandler.bind(this)}>
+							<button type="button">Delete Book</button>
+						</div>
+					</div>
 					<div>
-						<div id="Title">Title: {this.state.title} </div>
 						<div id="Author">Author: {this.state.author} </div>
 						<div id="Genere">Genere: {this.state.genere} </div>
 						<div id="Lent">
