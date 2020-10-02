@@ -41,7 +41,7 @@ export default class BookEntry extends Component {
 	};
 
 	Display = () => {
-		if (this.state.wish) {
+		if (this.state.wish === 'true') {
 			return (
 				<form>
 					<div>
@@ -77,7 +77,7 @@ export default class BookEntry extends Component {
 							<option value="Political">Political</option>
 						</select>
 					</div>
-					<button class="button" type="submit" onClick={this.HandleSubmit}>
+					<button className="button" type="submit" onClick={this.HandleSubmit}>
 						Submit
 					</button>
 				</form>
@@ -136,7 +136,7 @@ export default class BookEntry extends Component {
 							<option value="true">Yes</option>
 						</select>
 					</div>
-					<button class="button" type="submit" onClick={this.HandleSubmit}>
+					<button className="button" type="submit" onClick={this.HandleSubmit}>
 						Submit
 					</button>
 				</form>
