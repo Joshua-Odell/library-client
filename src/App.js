@@ -6,14 +6,17 @@ import BookEntry from './BookEntry/BookEntry';
 import './App.css';
 
 // TODO:
-// Make the My Library Icon a link to the homepage
+// Make My Library grow
 // Add in auth0 authentication
 
 function App() {
+	let homePageLocation = 'http://localhost:3000/';
 	return (
-		<body>
+		<div>
 			<nav className="container">
-				<h1 className="item">My Library</h1>
+				<a href={homePageLocation}>
+					<h1 className="item">My Library</h1>
+				</a>
 				<button className="item button" type="button">
 					Log In
 				</button>
@@ -22,9 +25,14 @@ function App() {
 			<main className="App">
 				<Route path="/" exact component={HomePage} />
 				<Route path="/book/:id" component={BookDetails} />
-				<Route path="/newbook" component={BookEntry} />
+				<Route path="/newbook/library">
+					<BookEntry wish="false" />
+				</Route>
+				<Route path="/newbook/wishlist">
+					<BookEntry wish="true" />
+				</Route>
 			</main>
-		</body>
+		</div>
 	);
 }
 
