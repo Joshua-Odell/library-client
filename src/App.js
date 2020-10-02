@@ -17,9 +17,9 @@ function App() {
 				<a href={homePageLocation}>
 					<h1 className="item">My Library</h1>
 				</a>
-				<button className="item button" type="button">
+				{/* <button className="item button" type="button">
 					Log In
-				</button>
+				</button> */}
 			</nav>
 			<hr />
 			<main className="App">

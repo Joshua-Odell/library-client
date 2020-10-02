@@ -145,6 +145,7 @@ export default class BookEntry extends Component {
 	};
 
 	render() {
+		console.log(this.props.wish);
 		return <this.Display />;
 	}
 }

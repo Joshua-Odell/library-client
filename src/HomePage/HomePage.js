@@ -41,7 +41,7 @@ export default class HomePage extends Component {
 	AddButton = (wish) => {
 		// Redirects to /newbook and calls BookEntry with a boolean prop depending on if
 		// the item is from the regular library or the wish list
-		if (wish) {
+		if (!wish) {
 			this.setState({ redirect: `/newbook/library` });
 		} else {
 			this.setState({ redirect: `/newbook/wishlist` });
