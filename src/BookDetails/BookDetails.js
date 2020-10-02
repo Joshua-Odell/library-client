@@ -30,6 +30,15 @@ export default class BookDetails extends Component {
 		}
 	};
 
+	// I prefer a yes or no for user interaction
+	BoolConversion = (bool) => {
+		if (bool) {
+			return 'Yes';
+		} else {
+			return 'No';
+		}
+	};
+
 	// DeleteHandler is called from the book details section to remove an item from the db
 	DeleteHandler = () => {
 		alert('delete');
@@ -98,15 +107,6 @@ export default class BookDetails extends Component {
 					</div>
 				</div>
 			);
-		}
-	};
-
-	// I prefer a yes or no for user interaction
-	BoolConversion = (bool) => {
-		if (bool) {
-			return 'Yes';
-		} else {
-			return 'No';
 		}
 	};
 
