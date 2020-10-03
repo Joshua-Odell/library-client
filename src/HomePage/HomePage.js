@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import config from '../config';
 
 export default class HomePage extends Component {
 	state = {
@@ -13,6 +14,48 @@ export default class HomePage extends Component {
 			},
 		],
 		libraryWishList: [],
+	};
+
+	componentWillMount() {
+		this.BookFetcher();
+		this.BookFetcher(true);
+	}
+
+	// This function is designed to fetch all books from both the library and wish list.
+	// It must be called twice once with no value and the second time with a true value to work for both lists.
+	// TODO:
+	// This does not seem to be making a network request so it just overwites the list with an empty array
+	BookFetcher = (wish = false) => {
+		let extension = '';
+		let property = '';
+		let list = [];
+		if (wish) {
+			extension = '/wish';
+			property = 'libraryWishList';
+		} else {
+			extension = '';
+			property = 'libraryList';
+		}
+		fetch(config.API_ENDPOINT + extension, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then((list) => {
+				console.log(list);
+				this.BookProcesser(list, property);
+			});
+	};
+
+	// This function takes the format returned by fetch and turns it into a list of objects to be easily read by the List Converter function.
+	BookProcesser = (list, property) => {
+		let result = [];
+		list.map((item) => {
+			result.push({ title: item.title, author: item.author });
+		});
+		this.setState({ [property]: result });
 	};
 
 	// This takes the returned fetchGet request list and converts it to a li format
