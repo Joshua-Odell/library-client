@@ -13,7 +13,7 @@ function App() {
 	let homePageLocation = 'http://localhost:3000/';
 	return (
 		<div>
-			<nav className="container">
+			<nav className="container--center">
 				<a href={homePageLocation}>
 					<h1 className="item">My Library</h1>
 				</a>

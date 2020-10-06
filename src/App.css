@@ -3,11 +3,22 @@ body {
 	text-align: center;
 }
 
+h1 {
+	color: teal;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	justify-content: space-between;
+	padding: 20px;
 }
+
+.item {
+	text-align: center;
+}
+
 .content {
 	display: inline-block;
 	text-align: left;
@@ -30,7 +41,8 @@ ul {
 @media screen and (min-width: 200px) {
 	.container {
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	main {

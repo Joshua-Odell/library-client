@@ -28,7 +28,6 @@ export default class HomePage extends Component {
 	BookFetcher = (wish = false) => {
 		let extension = '';
 		let property = '';
-		let list = [];
 		if (wish) {
 			extension = '/wish';
 			property = 'libraryWishList';
@@ -40,11 +39,11 @@ export default class HomePage extends Component {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
+				'access-control-allow-origin': '*',
 			},
 		})
 			.then((res) => res.json())
 			.then((list) => {
-				console.log(list);
 				this.BookProcesser(list, property);
 			});
 	};
@@ -53,7 +52,7 @@ export default class HomePage extends Component {
 	BookProcesser = (list, property) => {
 		let result = [];
 		list.map((item) => {
-			result.push({ title: item.title, author: item.author });
+			result.push({ title: item.title, author: item.author, id: item.id });
 		});
 		this.setState({ [property]: result });
 	};
@@ -66,7 +65,7 @@ export default class HomePage extends Component {
 			return 'There are no books in your library';
 		}
 		const listItems = list.map((item) => {
-			let newLocation = `http://localhost:3000/book/${item.id}`;
+			let newLocation = `http://localhost:3000/book/` + item.id;
 			return (
 				<li>
 					<p>

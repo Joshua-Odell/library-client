@@ -1,14 +1,61 @@
 import React, { Component } from 'react';
+import config from '../config';
 
 //This page should display a single books details when clicked on it should also contain a delete function to remove the book from the list
 export default class BookDetails extends Component {
 	state = {
+		redirect: null,
 		wish: false,
 		title: 'TITLE',
 		author: 'AUTHOR',
 		genere: 'ACTION',
 		lent: false,
 		completed: false,
+	};
+
+	componentWillMount() {
+		this.BookFetcher();
+	}
+
+	BookFetcher = () => {
+		let extension = '/';
+		let property = '';
+		if (this.state.wish) {
+			extension = '/wish/';
+		}
+		fetch(config.API_ENDPOINT + extension + this.props.match.params.id, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+				'access-control-allow-origin': '*',
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => this.FetchedStateSetter(data[0]));
+	};
+
+	FetchedStateSetter = (data) => {
+		this.setState({ title: data.title });
+		this.setState({ author: data.author });
+		this.setState({ genere: data.genere });
+		if (!this.state.wish) {
+			this.setState({ lent: data.lent });
+			this.setState({ completed: data.completed });
+		}
+	};
+
+	BookUpdater = () => {
+		fetch(config.API_ENDPOINT + '/' + this.props.match.params.id, {
+			method: 'PATCH',
+			body: JSON.stringify({
+				lent: this.state.lent,
+				completed: this.state.completed,
+			}),
+			headers: {
+				'content-type': 'application/json',
+				'access-control-allow-origin': '*',
+			},
+		}).then((res) => res.json());
 	};
 
 	// A general purpose state updater
@@ -18,6 +65,7 @@ export default class BookDetails extends Component {
 				target: { value },
 			} = event;
 			this.setState({ [property]: value });
+			this.BookUpdater();
 		};
 	};
 
@@ -41,7 +89,20 @@ export default class BookDetails extends Component {
 
 	// DeleteHandler is called from the book details section to remove an item from the db
 	DeleteHandler = () => {
-		alert('delete');
+		this.ConversionToBool('lent');
+		this.ConversionToBool('completed');
+		let extension = '/';
+		if (this.state.wish) {
+			extension = '/wish/';
+		}
+		fetch(config.API_ENDPOINT + extension + this.props.match.params.id, {
+			method: 'DELETE',
+			headers: {
+				'content-type': 'application/json',
+				'access-control-allow-origin': '*',
+			},
+		}).then((res) => res.json());
+		this.setState({ redirect: '/' });
 	};
 
 	Display = () => {
