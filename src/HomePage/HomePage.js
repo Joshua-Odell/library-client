@@ -32,7 +32,7 @@ export default class HomePage extends Component {
 			extension = '/wish';
 			property = 'libraryWishList';
 		} else {
-			extension = '';
+			extension = '/library';
 			property = 'libraryList';
 		}
 		fetch(config.API_ENDPOINT + extension, {
@@ -58,7 +58,7 @@ export default class HomePage extends Component {
 	};
 
 	// This takes the returned fetchGet request list and converts it to a li format
-	// TODO:
+	// TODO:Fi
 	// change the title to grow when hovered over to indicate that it is a link and change the pointer on hover
 	ListConverter = (list) => {
 		if (!list.length) {
@@ -67,7 +67,7 @@ export default class HomePage extends Component {
 		const listItems = list.map((item) => {
 			let newLocation = `http://localhost:3000/book/` + item.id;
 			return (
-				<li>
+				<li key={item.id}>
 					<p>
 						<a href={newLocation} target="_blank" rel="noopener noreferrer">
 							{item.title}

@@ -13,12 +13,15 @@ export default class BookDetails extends Component {
 		completed: false,
 	};
 
+	// TODO:
+	// I need to fix the Wish List Book Detail Calls
+
 	componentWillMount() {
 		this.BookFetcher();
 	}
 
 	BookFetcher = () => {
-		let extension = '/';
+		let extension = '/library/';
 		let property = '';
 		if (this.state.wish) {
 			extension = '/wish/';
@@ -45,7 +48,7 @@ export default class BookDetails extends Component {
 	};
 
 	BookUpdater = () => {
-		fetch(config.API_ENDPOINT + '/' + this.props.match.params.id, {
+		fetch(config.API_ENDPOINT + '/library/' + this.props.match.params.id, {
 			method: 'PATCH',
 			body: JSON.stringify({
 				lent: this.state.lent,
@@ -91,7 +94,7 @@ export default class BookDetails extends Component {
 	DeleteHandler = () => {
 		this.ConversionToBool('lent');
 		this.ConversionToBool('completed');
-		let extension = '/';
+		let extension = '/library/';
 		if (this.state.wish) {
 			extension = '/wish/';
 		}

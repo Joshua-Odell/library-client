@@ -18,7 +18,7 @@ export default class BookEntry extends Component {
 	}
 
 	BookSubmission = () => {
-		let extension = '';
+		let extension = '/library';
 		if (this.state.wish === 'true') {
 			extension = '/wish';
 		}
