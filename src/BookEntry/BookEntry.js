@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import config from '../config';
 
 //This component should return a form with entry information and take a single prop that determines if the book is entered into the normal or the wish list.
 export default class BookEntry extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			redirect: null,
 			wish: this.props.wish,
 			title: '',
 			author: '',
@@ -13,6 +16,33 @@ export default class BookEntry extends Component {
 			completed: false,
 		};
 	}
+
+	BookSubmission = () => {
+		let extension = '/library';
+		if (this.state.wish === 'true') {
+			extension = '/wish';
+		}
+		fetch(config.API_ENDPOINT + extension, {
+			method: 'POST',
+			body: JSON.stringify({
+				title: this.state.title,
+				author: this.state.author,
+				genere: this.state.genere,
+				lent: this.state.lent,
+				completed: this.state.completed,
+			}),
+			headers: {
+				'content-type': 'application/json',
+			},
+		})
+			.then((res) => {
+				if (!res.ok) {
+					alert('post was not sucessfull');
+				}
+				return res.json();
+			})
+			.then((res) => this.setState({ redirect: '/' }));
+	};
 
 	// A general purpose state updater
 	StateUpdate = (property) => {
@@ -37,10 +67,14 @@ export default class BookEntry extends Component {
 		event.preventDefault();
 		this.ConversionToBool('lent');
 		this.ConversionToBool('completed');
+		this.BookSubmission();
 		// will make a fetch POST request to the server
 	};
 
 	Display = () => {
+		if (this.state.redirect) {
+			return <Redirect to={this.state.redirect} />;
+		}
 		if (this.state.wish === 'true') {
 			return (
 				<form>

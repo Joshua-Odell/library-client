@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import config from '../config';
 
 export default class HomePage extends Component {
 	state = {
@@ -15,17 +16,58 @@ export default class HomePage extends Component {
 		libraryWishList: [],
 	};
 
-	// This takes the returned fetchGet request list and converts it to a li format
+	componentWillMount() {
+		this.BookFetcher();
+		this.BookFetcher(true);
+	}
+
+	// This function is designed to fetch all books from both the library and wish list.
+	// It must be called twice once with no value and the second time with a true value to work for both lists.
 	// TODO:
+	// This does not seem to be making a network request so it just overwites the list with an empty array
+	BookFetcher = (wish = false) => {
+		let extension = '';
+		let property = '';
+		if (wish) {
+			extension = '/wish';
+			property = 'libraryWishList';
+		} else {
+			extension = '/library';
+			property = 'libraryList';
+		}
+		fetch(config.API_ENDPOINT + extension, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+				'access-control-allow-origin': '*',
+			},
+		})
+			.then((res) => res.json())
+			.then((list) => {
+				this.BookProcesser(list, property);
+			});
+	};
+
+	// This function takes the format returned by fetch and turns it into a list of objects to be easily read by the List Converter function.
+	BookProcesser = (list, property) => {
+		let result = [];
+		list.map((item) => {
+			result.push({ title: item.title, author: item.author, id: item.id });
+		});
+		this.setState({ [property]: result });
+	};
+
+	// This takes the returned fetchGet request list and converts it to a li format
+	// TODO:Fi
 	// change the title to grow when hovered over to indicate that it is a link and change the pointer on hover
 	ListConverter = (list) => {
 		if (!list.length) {
 			return 'There are no books in your library';
 		}
 		const listItems = list.map((item) => {
-			let newLocation = `http://localhost:3000/book/${item.id}`;
+			let newLocation = `https://library-client.vercel.app/book/` + item.id;
 			return (
-				<li>
+				<li key={item.id}>
 					<p>
 						<a href={newLocation} target="_blank" rel="noopener noreferrer">
 							{item.title}
