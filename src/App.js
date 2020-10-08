@@ -10,7 +10,7 @@ import './App.css';
 // Add in auth0 authentication
 
 function App() {
-	let homePageLocation = 'http://localhost:3000/';
+	let homePageLocation = 'https://library-client.vercel.app/';
 	return (
 		<div>
 			<nav className="container--center">

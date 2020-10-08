@@ -65,7 +65,7 @@ export default class HomePage extends Component {
 			return 'There are no books in your library';
 		}
 		const listItems = list.map((item) => {
-			let newLocation = `http://localhost:3000/book/` + item.id;
+			let newLocation = `https://library-client.vercel.app/book/` + item.id;
 			return (
 				<li key={item.id}>
 					<p>
