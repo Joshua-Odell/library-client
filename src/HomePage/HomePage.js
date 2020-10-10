@@ -16,6 +16,8 @@ export default class HomePage extends Component {
 		libraryWishList: [],
 	};
 
+	// runs two versions
+
 	componentWillMount() {
 		this.BookFetcher();
 		this.BookFetcher(true);
