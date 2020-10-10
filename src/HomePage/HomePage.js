@@ -71,7 +71,7 @@ export default class HomePage extends Component {
 			return (
 				<li key={item.id}>
 					<p>
-						<a href={newLocation} target="_blank" rel="noopener noreferrer">
+						<a href={newLocation} rel="noopener noreferrer">
 							{item.title}
 						</a>
 						, By: {item.author}
