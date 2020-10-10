@@ -116,7 +116,7 @@ export default class HomePage extends Component {
 					</div>
 					<hr />
 					<div htmlFor="LibraryListItems" className="content">
-						{this.ListConverter(this.state.libraryList)}
+						{this.ListConverter(this.state.libraryList, false)}
 					</div>
 				</div>
 				<div htmlFor="WishList">
@@ -132,7 +132,7 @@ export default class HomePage extends Component {
 					</div>
 					<hr />
 					<div htmlFor="WishListItems" className="content">
-						{this.ListConverter(this.state.libraryWishList)}
+						{this.ListConverter(this.state.libraryWishList, true)}
 					</div>
 				</div>
 			</div>
