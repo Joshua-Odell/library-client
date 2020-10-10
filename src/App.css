@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner&family=Cormorant+Garamond:ital,wght@1,500&family=Titillium+Web&display=swap');
+
 body {
 	background: white;
 	text-align: center;
 }
 
+header {
+	background-color: #2e2e2e;
+	padding: 18px;
+}
+
 h1 {
-	color: teal;
+	color: #f1f1f1;
+	font-family: 'Cormorant Garamond', serif;
 }
 
 .container {
@@ -19,9 +27,17 @@ h1 {
 	text-align: center;
 }
 
+.homePage {
+	font-family: 'Commissioner', sans-serif;
+}
+
 .content {
 	display: inline-block;
 	text-align: left;
+}
+
+.instructions {
+	padding: 10px;
 }
 
 .button {
