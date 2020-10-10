@@ -25,7 +25,7 @@ export default class BookDetails extends Component {
 
 	BookFetcher = () => {
 		let extension = '/library/';
-		let property = '';
+		console.log(this.props.wish);
 		if (this.state.wish) {
 			extension = '/wish/';
 		}
