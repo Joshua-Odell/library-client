@@ -66,6 +66,7 @@ export default class HomePage extends Component {
 		if (!list.length) {
 			return 'There are no books in your library';
 		}
+		let newLocationString;
 		if (!bool) {
 			newLocationString = `https://library-client.vercel.app/book/`;
 		} else {
