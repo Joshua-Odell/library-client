@@ -104,37 +104,57 @@ export default class HomePage extends Component {
 		}
 		return (
 			<div htmlFor="HomePage">
-				<div htmlFor="LibraryList">
-					<div htmlFor="LibraryListHeader" className="container">
-						<h2 className="item">Books in your library</h2>
-						<button
-							className="item button"
-							type="button"
-							onClick={this.AddButton.bind(this, false)}
-						>
-							+
-						</button>
+				<div className="primaryContent">
+					<div htmlFor="LibraryList">
+						<div htmlFor="LibraryListHeader" className="container">
+							<h2 className="item">Books in your Library</h2>
+							<button
+								className="item button"
+								type="button"
+								onClick={this.AddButton.bind(this, false)}
+							>
+								+
+							</button>
+						</div>
+						<hr />
+						<div htmlFor="LibraryListItems" className="content">
+							{this.ListConverter(this.state.libraryList, false)}
+						</div>
 					</div>
-					<hr />
-					<div htmlFor="LibraryListItems" className="content">
-						{this.ListConverter(this.state.libraryList, false)}
+					<div htmlFor="WishList">
+						<div htmlFor="WishListHeader" className="container">
+							<h2 className="item">Books in your Wish List</h2>
+							<button
+								type="button"
+								className="item button"
+								onClick={this.AddButton.bind(this, true)}
+							>
+								+
+							</button>
+						</div>
+						<hr />
+						<div htmlFor="WishListItems" className="content">
+							{this.ListConverter(this.state.libraryWishList, true)}
+						</div>
 					</div>
 				</div>
-				<div htmlFor="WishList">
-					<div htmlFor="WishListHeader" className="container">
-						<h2 className="item">Books in your Wish List</h2>
-						<button
-							type="button"
-							className="item button"
-							onClick={this.AddButton.bind(this, true)}
-						>
-							+
-						</button>
-					</div>
-					<hr />
-					<div htmlFor="WishListItems" className="content">
-						{this.ListConverter(this.state.libraryWishList, true)}
-					</div>
+
+				<div>
+					<h3>Welcome to My Library</h3>
+					<p>
+						My Library is a library tracking application that allows you to not
+						only keep track of the books in your library but also a wish list of
+						books. By clicking on a book you will see more details about that
+						book You can also quickly track if you let a friend borrow your
+						books through the lent drop down feature. Similarly you can also see
+						what books you have finished. Avid readers can quickly loose track
+						of individual books in their vast library. This application makes
+						keeping track of and building a personal library very easy. From a
+						purely practical perspective having an off site index of your
+						library is extremley helpful for insurance purpouses. Who could be
+						expected to remember every one of thier books in a tragic
+						circumstance.
+					</p>
 				</div>
 			</div>
 		);
