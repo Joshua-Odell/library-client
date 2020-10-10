@@ -62,12 +62,17 @@ export default class HomePage extends Component {
 	// This takes the returned fetchGet request list and converts it to a li format
 	// TODO:Fi
 	// change the title to grow when hovered over to indicate that it is a link and change the pointer on hover
-	ListConverter = (list) => {
+	ListConverter = (list, bool) => {
 		if (!list.length) {
 			return 'There are no books in your library';
 		}
+		if (!bool) {
+			newLocationString = `https://library-client.vercel.app/book/`;
+		} else {
+			newLocationString = `https://library-client.vercel.app/wish/`;
+		}
 		const listItems = list.map((item) => {
-			let newLocation = `https://library-client.vercel.app/book/` + item.id;
+			let newLocation = newLocationString + item.id;
 			return (
 				<li key={item.id}>
 					<p>
