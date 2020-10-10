@@ -103,7 +103,7 @@ export default class HomePage extends Component {
 			return <Redirect to={this.state.redirect} />;
 		}
 		return (
-			<div htmlFor="HomePage">
+			<div htmlFor="HomePage" className="homePage">
 				<div className="primaryContent">
 					<div htmlFor="LibraryList">
 						<div htmlFor="LibraryListHeader" className="container">
@@ -138,19 +138,18 @@ export default class HomePage extends Component {
 						</div>
 					</div>
 				</div>
-
-				<div>
+				<div className="instructions">
 					<h3>Welcome to My Library</h3>
 					<p>
 						My Library is a library tracking application that allows you to not
 						only keep track of the books in your library but also a wish list of
-						books. By clicking on a book you will see more details about that
-						book You can also quickly track if you let a friend borrow your
+						books. <br /> By clicking on a book you will see more details about
+						that book You can also quickly track if you let a friend borrow your
 						books through the lent drop down feature. Similarly you can also see
-						what books you have finished. Avid readers can quickly loose track
-						of individual books in their vast library. This application makes
-						keeping track of and building a personal library very easy. From a
-						purely practical perspective having an off site index of your
+						what books you have finished. <br /> Avid readers can quickly loose
+						track of individual books in their vast library. This application
+						makes keeping track of and building a personal library very easy.
+						From a purely practical perspective having an off site index of your
 						library is extremley helpful for insurance purpouses. Who could be
 						expected to remember every one of thier books in a tragic
 						circumstance.
