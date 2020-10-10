@@ -115,7 +115,7 @@ export default class BookDetails extends Component {
 	Display = () => {
 		if (this.state.wish) {
 			return (
-				<div>
+				<div className="bookDetails">
 					<div className="container">
 						<div id="Title" className="item">
 							Title: {this.state.title}{' '}
@@ -134,7 +134,7 @@ export default class BookDetails extends Component {
 			);
 		} else {
 			return (
-				<div>
+				<div className="bookDetails">
 					<div className="container">
 						<div id="Title" className="item">
 							<h2>{this.state.title}</h2>
