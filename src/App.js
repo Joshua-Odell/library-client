@@ -25,6 +25,7 @@ function App() {
 			<main className="App">
 				<Route path="/" exact component={HomePage} />
 				<Route path="/book/:id" component={BookDetails} />
+				<Route path="/wish/:id" component={BookDetails} />
 				<Route path="/newbook/library">
 					<BookEntry wish="false" />
 				</Route>
