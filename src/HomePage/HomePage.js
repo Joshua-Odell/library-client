@@ -100,7 +100,7 @@ export default class HomePage extends Component {
 			<div htmlFor="HomePage">
 				<div htmlFor="LibraryList">
 					<div htmlFor="LibraryListHeader" className="container">
-						<h2 className="item">Books in your library</h2>
+						<h2 className="item">Books in your Library</h2>
 						<button
 							className="item button"
 							type="button"

@@ -111,6 +111,7 @@ export default class BookDetails extends Component {
 		this.setState({ redirect: '/' });
 	};
 
+	// Lent and Completed section is commented out for itteration purposes to get more feedback on this feature
 	Display = () => {
 		if (this.state.wish) {
 			return (
@@ -145,12 +146,12 @@ export default class BookDetails extends Component {
 					<div>
 						<div id="Author">Author: {this.state.author} </div>
 						<div id="Genere">Genere: {this.state.genere} </div>
-						<div id="Lent">
+						{/* <div id="Lent">
 							Lent Out: {this.BoolConversion(this.state.lent)}{' '}
 						</div>
 						<div id="Completed">
 							Completed: {this.BoolConversion(this.state.completed)}{' '}
-						</div>
+						</div> */}
 					</div>
 					<div>
 						<div>
