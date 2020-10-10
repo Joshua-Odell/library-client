@@ -3,15 +3,18 @@ import config from '../config';
 
 //This page should display a single books details when clicked on it should also contain a delete function to remove the book from the list
 export default class BookDetails extends Component {
-	state = {
-		redirect: null,
-		wish: false,
-		title: 'TITLE',
-		author: 'AUTHOR',
-		genere: 'ACTION',
-		lent: false,
-		completed: false,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			redirect: null,
+			wish: this.props.wish,
+			title: 'TITLE',
+			author: 'AUTHOR',
+			genere: 'ACTION',
+			lent: false,
+			completed: false,
+		};
+	}
 
 	// TODO:
 	// I need to fix the Wish List Book Detail Calls
