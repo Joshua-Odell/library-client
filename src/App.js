@@ -13,7 +13,7 @@ function App() {
 	let homePageLocation = 'https://library-client.vercel.app/';
 	return (
 		<div>
-			<nav className="container--center">
+			<nav className="container--center emphasize">
 				<a href={homePageLocation}>
 					<h1 className="item">My Library</h1>
 				</a>
