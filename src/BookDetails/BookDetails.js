@@ -47,7 +47,7 @@ export default class BookDetails extends Component {
 		this.setState({ title: data.title });
 		this.setState({ author: data.author });
 		this.setState({ genere: data.genere });
-		if (!this.state.wish) {
+		if (!this.props.location.pathname === '/wish/1') {
 			this.setState({ lent: data.lent });
 			this.setState({ completed: data.completed });
 		}
