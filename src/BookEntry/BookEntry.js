@@ -17,6 +17,8 @@ export default class BookEntry extends Component {
 		};
 	}
 
+	// A fetch request to submit a new book to the library
+	// The extension is dynamic depending on the relevant library
 	BookSubmission = () => {
 		let extension = '/library';
 		if (this.state.wish === 'true') {
@@ -68,7 +70,6 @@ export default class BookEntry extends Component {
 		this.ConversionToBool('lent');
 		this.ConversionToBool('completed');
 		this.BookSubmission();
-		// will make a fetch POST request to the server
 	};
 
 	Display = () => {

@@ -5,10 +5,6 @@ import BookDetails from './BookDetails/BookDetails';
 import BookEntry from './BookEntry/BookEntry';
 import './App.css';
 
-// TODO:
-// Make My Library grow
-// Add in auth0 authentication
-
 function App() {
 	let homePageLocation = 'https://library-client.vercel.app/';
 	return (
