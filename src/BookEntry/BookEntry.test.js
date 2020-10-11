@@ -5,11 +5,17 @@ import StateUpdate from './BookEntry';
 import ConversionToBool from './BookEntry';
 import HandleSubmit from './BookEntry';
 import Display from './BookEntry';
+import BookSubmission from './BookEntry';
 
 describe('BookEntry tests', () => {
 	it('S BookEntry', () => {
 		const div = document.createElement('div');
 		ReactDOM.render(<BookEntry />, div);
+		ReactDOM.unmountComponentAtNode(div);
+	});
+	it('S BookSubmission', () => {
+		const div = document.createElement('div');
+		ReactDOM.render(<BookSubmission />, div);
 		ReactDOM.unmountComponentAtNode(div);
 	});
 	it('S StateUpdate', () => {

@@ -19,10 +19,13 @@ export default class BookDetails extends Component {
 	// TODO:
 	// I need to fix the Wish List Book Detail Calls
 
+	// When the page loads a fetch request is made through the function BookFetcher
 	componentWillMount() {
 		this.BookFetcher();
 	}
 
+	// This function makes a get request that returns information for a single book
+	// The extension element is dynamic depending on the which library the book belongs to
 	BookFetcher = () => {
 		let extension = '/library/';
 		console.log(this.props.wish);
@@ -40,6 +43,7 @@ export default class BookDetails extends Component {
 			.then((data) => this.FetchedStateSetter(data[0]));
 	};
 
+	// This function takes the information returned from the fetch request and sets that information in the relevant state
 	FetchedStateSetter = (data) => {
 		this.setState({ title: data.title });
 		this.setState({ author: data.author });
@@ -50,6 +54,7 @@ export default class BookDetails extends Component {
 		}
 	};
 
+	// This function updates the db through a patch request whenever the lent and completed field is completed
 	BookUpdater = () => {
 		fetch(config.API_ENDPOINT + '/library/' + this.props.match.params.id, {
 			method: 'PATCH',

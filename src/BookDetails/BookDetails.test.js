@@ -6,11 +6,29 @@ import ConversionToBool from './BookDetails';
 import BoolConversion from './BookDetails';
 import DeleteHandler from './BookDetails';
 import Display from './BookDetails';
+import BookFetcher from './BookDetails';
+import FetchedStateSetter from './BookDetails';
+import BookUpdater from './BookDetails';
 
 describe('BookDetails test', () => {
 	it('S BookDetails', () => {
 		const div = document.createElement('div');
 		ReactDOM.render(<BookDetails />, div);
+		ReactDOM.unmountComponentAtNode(div);
+	});
+	it('S BookFetcher', () => {
+		const div = document.createElement('div');
+		ReactDOM.render(<BookFetcher />, div);
+		ReactDOM.unmountComponentAtNode(div);
+	});
+	it('S FetchedStateSetter', () => {
+		const div = document.createElement('div');
+		ReactDOM.render(<FetchedStateSetter />, div);
+		ReactDOM.unmountComponentAtNode(div);
+	});
+	it('S BookUpdater', () => {
+		const div = document.createElement('div');
+		ReactDOM.render(<BookUpdater />, div);
 		ReactDOM.unmountComponentAtNode(div);
 	});
 	it('S StateUpdate', () => {
