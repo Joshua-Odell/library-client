@@ -28,7 +28,7 @@ export default class BookDetails extends Component {
 	// The extension element is dynamic depending on the which library the book belongs to
 	BookFetcher = () => {
 		let extension = '/library/';
-		console.log(this.props.wish);
+		console.log(this.props);
 		if (this.state.wish) {
 			extension = '/wish/';
 		}
