@@ -6,15 +6,25 @@ My Library also allows for a book wish list for growing your personal library.
 
 ## Repos:
 
-Client-
+Client- https://github.com/Joshua-Odell/library-client
 
-Server-
+Server- https://github.com/Joshua-Odell/library-server
 
-Live App-
+Live App- https://library-client.vercel.app/
 
 ## Instructions:
 
-When you land on the homepage you get a list of books right away. The top list is your library and the bottom is your wish list. If you click on a book title it will take you to a page with specific information on that book. If you click on the plus button you are directed to a page that allows you to enter in a new book. The My Library title also functions as a link to the home page.
+When you land on the homepage you get a list of books right away. The top list is your library and the bottom is your wish list. If you click on a book title it will take you to a page with specific information on that book.
+
+[Landing Screen](/picture/Library.jpg)
+
+If you click on the plus button you are directed to a page that allows you to enter in a new book. The My Library title also functions as a link to the home page.
+
+[Detail Screen](/picture/Details.jpg)
+
+## Technology:
+
+This application uses the React Framework on the front-end. It is written primarily on Java Script and includes HTML and CSS. The backend uses node.js on the backend. It also utilizes knex to interact with a SQL database.
 
 ## Endpoints
 
