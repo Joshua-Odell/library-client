@@ -21,14 +21,25 @@ export default class BookDetails extends Component {
 
 	// When the page loads a fetch request is made through the function BookFetcher
 	componentWillMount() {
+		//this.WishCheck();
 		this.BookFetcher();
 	}
+
+	// This function just checks the location parameter and changes the wish state
+	// WishCheck = () => {
+	// 	if (this.props.location.pathname[2] === 'w') {
+	// 		this.setState({ wish: true });
+	// 	} else {
+	// 		this.setState({ wish: false });
+	// 	}
+	// };
 
 	// This function makes a get request that returns information for a single book
 	// The extension element is dynamic depending on the which library the book belongs to
 	BookFetcher = () => {
 		let extension = '/library/';
-		if (this.props.location.pathname === '/wish/1') {
+		console.log;
+		if (this.state.wish) {
 			extension = '/wish/';
 		}
 		fetch(config.API_ENDPOINT + extension + this.props.match.params.id, {
@@ -47,7 +58,7 @@ export default class BookDetails extends Component {
 		this.setState({ title: data.title });
 		this.setState({ author: data.author });
 		this.setState({ genere: data.genere });
-		if (!this.props.location.pathname === '/wish/1') {
+		if (!this.state.wish) {
 			this.setState({ lent: data.lent });
 			this.setState({ completed: data.completed });
 		}
