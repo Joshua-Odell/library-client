@@ -13,6 +13,7 @@ export default class BookDetails extends Component {
 			genere: 'ACTION',
 			lent: false,
 			completed: false,
+			id: this.props.match,
 		};
 	}
 
@@ -42,7 +43,7 @@ export default class BookDetails extends Component {
 		if (this.state.wish) {
 			extension = '/wish/';
 		}
-		fetch(config.API_ENDPOINT + extension + this.props.match.params.id, {
+		fetch(config.API_ENDPOINT + extension + this.state.id, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
